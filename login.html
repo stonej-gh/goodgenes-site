@@ -1,0 +1,90 @@
+<!doctype html>
+<!--
+  GoodGenes — internal team login (SKELETON / STUB, 2026-07-03)
+  ------------------------------------------------------------------
+  Non-functional placeholder. This is the entry point for internal
+  users (Patty + employees) to reach the inventory / listings tools.
+  There is NO auth wired yet — the form does not submit anywhere.
+  Real auth is TBD once the ops/inventory app exists. Self-contained.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Team login — GoodGenes</title>
+<style>
+  :root{
+    --indigo:#2b3a55;--denim:#4a6a99;--sage:#6f8f6a;
+    --paper:#f7f4ee;--ink:#20262f;--ink-soft:#5a6472;
+    --line:rgba(43,58,85,.16);--shadow:0 24px 60px -28px rgba(43,58,85,.5);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;min-height:100vh;font-family:var(--sans);color:var(--ink);
+    background:
+      radial-gradient(1200px 600px at 80% -10%, #e9edf4 0%, transparent 60%),
+      var(--paper);
+    display:flex;align-items:center;justify-content:center;padding:24px;
+  }
+  .card{
+    width:100%;max-width:392px;background:#fff;border:1px solid var(--line);
+    border-radius:20px;box-shadow:var(--shadow);padding:38px 34px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:6px;text-decoration:none}
+  .brand svg{width:28px;height:28px}
+  .brand .word{font-family:var(--serif);font-size:1.5rem}
+  .brand .word b{color:var(--indigo)}.brand .word span{color:var(--sage)}
+  .sub{text-align:center;color:var(--ink-soft);font-size:.9rem;margin:0 0 28px}
+  label{display:block;font:600 .82rem/1 var(--sans);color:var(--indigo);margin:0 0 7px}
+  .field{margin-bottom:18px}
+  input{
+    width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:11px;
+    font:400 1rem/1.2 var(--sans);background:#fbfaf7;color:var(--ink);
+  }
+  input:focus{outline:none;border-color:var(--denim);box-shadow:0 0 0 3px rgba(74,106,153,.16)}
+  .btn{
+    width:100%;padding:13px;border:0;border-radius:11px;background:var(--indigo);
+    color:#fff;font:600 1rem/1 var(--sans);cursor:pointer;transition:.15s ease;
+  }
+  .btn:hover{background:#22304a}
+  .stub-note{
+    margin:18px 0 0;padding:10px 12px;border-radius:10px;
+    background:#f4f1e8;border:1px dashed var(--line);
+    color:var(--ink-soft);font-size:.78rem;text-align:center;
+  }
+  .back{display:block;text-align:center;margin-top:22px;color:var(--ink-soft);font-size:.86rem;text-decoration:none}
+  .back:hover{color:var(--indigo)}
+</style>
+</head>
+<body>
+  <div class="card">
+    <a class="brand" href="index.html" aria-label="GoodGenes home">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M7 3c0 4 10 6 10 9s-10 5-10 9" stroke="#2b3a55" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M17 3c0 4-10 6-10 9s10 5 10 9" stroke="#6f8f6a" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M8.5 7h7M8.5 12h7M8.5 17h7" stroke="#8ea6c8" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+      <span class="word"><b>Good</b><span>Genes</span></span>
+    </a>
+    <p class="sub">Team sign-in · internal access</p>
+
+    <!-- STUB: does not submit; preventDefault keeps it inert -->
+    <form onsubmit="event.preventDefault()">
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" type="email" autocomplete="username" placeholder="you@goodgenes.net">
+      </div>
+      <div class="field">
+        <label for="pw">Password</label>
+        <input id="pw" type="password" autocomplete="current-password" placeholder="••••••••">
+      </div>
+      <button class="btn" type="submit">Sign in</button>
+    </form>
+
+    <p class="stub-note">Placeholder — sign-in is not wired up yet.</p>
+    <a class="back" href="index.html">← Back to goodgenes.net</a>
+  </div>
+</body>
+</html>
