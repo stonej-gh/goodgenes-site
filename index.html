@@ -1,228 +1,256 @@
 <!doctype html>
 <!--
-  GoodGenes — landing page (SKELETON, 2026-07-03)
+  GoodGenes — landing page (v2, 2026-07-04) — PATTY'S BRAND DIRECTION.
   ------------------------------------------------------------------
-  Two jobs: (1) lend credibility to GoodGenes for anyone who finds the
-  domain; (2) an entry point for internal users (Patty + employees) to
-  sign in and manage inventory/listings.
+  Brief (Patty's voice): "The font should be more modern. Luxury meets
+  rebellion meets street vibe. High-end aesthetic with a shadow side of
+  punk rock." Keeps her existing identity: deep-blue + gold shimmer,
+  interlocking GG monogram, tagline "Wear your legacy."
+  Palette (her order, most->least): deep blue + gold, black, white, rust/terracotta.
 
-  ⚠ ALL COPY & GRAPHICS BELOW ARE AI PLACEHOLDERS generated while Jeff
-  (IT) was driving. They are a best-guess starting point, NOT the brand
-  voice. Patty owns the voice — her real copy/graphics replace all of
-  this. Blocks tagged PLACEHOLDER in the comments below are the ones to swap.
+  Type is now MODERN: Anton (street/poster display) + Archivo (modern grotesk).
+  The GG monogram is built from the Anton 'G' (upright + rotated) so the mark and
+  the wordmark share one modern typeface.
 
-  Themes (priority): (1) jeans/fashion  (2) botany  (3) subtle DNA/gene.
-  Self-contained: inline CSS + inline SVG, no external assets.
+  Copy is AI-drafted IN PATTY'S STATED DIRECTION, pending her final words.
 -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GoodGenes — curated pre-loved fashion</title>
-<meta name="description" content="GoodGenes gives high-quality pre-owned clothing a second life — curated, authenticated, and ready for its next chapter.">
+<title>GoodGenes — wear your legacy</title>
+<meta name="description" content="High-end fashion with a past — curated, authenticated, reborn. Wear your legacy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231d2478'/%3E%3Ctext x='32' y='46' font-family='Arial Black,sans-serif' font-size='42' font-weight='900' text-anchor='middle' fill='%23d8a83f'%3EG%3C/text%3E%3C/svg%3E">
 <style>
   :root{
-    /* Denim (jeans) primary + botany accent + warm paper */
-    --indigo:#2b3a55;      /* deep denim */
-    --denim:#4a6a99;       /* mid denim */
-    --denim-soft:#8ea6c8;
-    --sage:#6f8f6a;        /* botany accent */
-    --sage-soft:#aac0a2;
-    --paper:#f7f4ee;       /* warm off-white */
-    --paper-2:#efeae0;
-    --ink:#20262f;
-    --ink-soft:#5a6472;
-    --line:rgba(43,58,85,.14);
-    --shadow:0 18px 50px -24px rgba(43,58,85,.45);
-    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
-    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --blue:#1d2478;          /* Patty's deep royal blue */
+    --blue-deep:#0d1030;     /* shadow */
+    --ink:#08080c;           /* punk black */
+    --gold:#d8a83f;
+    --gold-lite:#f4de8a;
+    --white:#f7f5ef;
+    --rust:#bd5433;          /* terracotta — the rebellion accent */
+    --line:rgba(216,168,63,.22);
+    --gold-grad:linear-gradient(120deg,#f6e2a0 0%,#e7c15f 38%,#d8a83f 60%,#a9781f 100%);
+    --display:"Anton",Impact,"Arial Narrow Bold",sans-serif;
+    --sans:"Archivo","Helvetica Neue",Arial,sans-serif;
   }
   *{box-sizing:border-box}
-  html,body{margin:0}
+  html{overflow-x:clip}
+  html,body{margin:0;width:100%;max-width:100%;overflow-x:clip}
   body{
-    font-family:var(--sans);
-    color:var(--ink);
-    background:var(--paper);
-    line-height:1.6;
+    font-family:var(--sans);color:var(--white);line-height:1.6;
+    background:
+      radial-gradient(1200px 700px at 78% -8%, #2a32a0 0%, transparent 55%),
+      radial-gradient(900px 700px at 8% 110%, #241a3a 0%, transparent 55%),
+      linear-gradient(180deg, var(--blue) 0%, var(--blue-deep) 46%, var(--ink) 100%);
+    background-attachment:fixed;
     -webkit-font-smoothing:antialiased;
   }
+  /* gold shimmer speckle, echoing her logo bg */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+    background-image:
+      radial-gradient(1.5px 1.5px at 20% 30%, rgba(244,222,138,.7), transparent),
+      radial-gradient(1px 1px at 70% 20%, rgba(216,168,63,.6), transparent),
+      radial-gradient(1.5px 1.5px at 85% 65%, rgba(244,222,138,.5), transparent),
+      radial-gradient(1px 1px at 35% 80%, rgba(216,168,63,.5), transparent),
+      radial-gradient(1px 1px at 55% 50%, rgba(244,222,138,.4), transparent);
+    background-size:520px 520px,400px 400px,600px 600px,480px 480px,360px 360px;
+  }
+  .wrap{max-width:1120px;margin:0 auto;padding:0 26px;position:relative;z-index:1}
   a{color:inherit}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  .gold{background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 
-  /* --- Top bar --- */
-  header{
-    position:sticky;top:0;z-index:10;
-    background:rgba(247,244,238,.82);
-    backdrop-filter:saturate(140%) blur(8px);
-    border-bottom:1px solid var(--line);
-  }
-  .bar{display:flex;align-items:center;justify-content:space-between;height:68px}
-  .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
-  .brand .mark{width:26px;height:26px;flex:0 0 auto}
-  .brand .word{font-family:var(--serif);font-size:1.4rem;letter-spacing:.2px}
-  .brand .word b{font-weight:700;color:var(--indigo)}
-  .brand .word span{font-weight:600;color:var(--sage)}
-  .btn{
-    display:inline-flex;align-items:center;gap:8px;
-    font:600 .92rem/1 var(--sans);
-    padding:11px 18px;border-radius:999px;text-decoration:none;
-    border:1px solid transparent;cursor:pointer;transition:.15s ease;
-  }
-  .btn-ghost{border-color:var(--line);color:var(--indigo);background:transparent}
-  .btn-ghost:hover{background:#fff;box-shadow:var(--shadow)}
-  .btn-solid{background:var(--indigo);color:#fff}
-  .btn-solid:hover{background:#22304a}
+  /* wordmark + monogram (shared modern typeface) */
+  .brand{display:flex;align-items:center;gap:13px;text-decoration:none}
+  .mono{position:relative;width:42px;height:42px;flex:0 0 auto;display:grid;place-items:center}
+  .mono span{position:absolute;font-family:var(--display);font-size:40px;line-height:1;
+    background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .mono .g1{transform:translateX(-6px)}
+  .mono .g2{transform:translateX(6px) rotate(180deg)}
+  .word{font-family:var(--sans);font-weight:900;font-size:1.45rem;letter-spacing:.02em;
+    text-transform:uppercase;background:var(--gold-grad);-webkit-background-clip:text;
+    background-clip:text;color:transparent}
 
-  /* --- Hero --- */
-  .hero{position:relative;overflow:hidden}
-  .hero .wrap{padding-top:76px;padding-bottom:84px;position:relative;z-index:2}
-  .eyebrow{
-    display:inline-flex;align-items:center;gap:8px;
-    font:600 .74rem/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;
-    color:var(--sage);margin-bottom:22px;
-  }
-  .eyebrow::before{content:"";width:22px;height:1.5px;background:var(--sage)}
-  h1{
-    font-family:var(--serif);font-weight:700;
-    font-size:clamp(2.5rem,6vw,4.1rem);line-height:1.04;
-    letter-spacing:-.5px;margin:0 0 20px;color:var(--indigo);max-width:14ch;
-  }
-  h1 em{font-style:italic;color:var(--sage)}
-  .lede{font-size:clamp(1.05rem,2.2vw,1.28rem);color:var(--ink-soft);max-width:52ch;margin:0 0 34px}
+  header{position:sticky;top:0;z-index:20;backdrop-filter:blur(9px);
+    background:rgba(13,16,48,.6);border-bottom:1px solid var(--line)}
+  .bar{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .btn{display:inline-flex;align-items:center;gap:8px;font:700 .82rem/1 var(--sans);
+    text-transform:uppercase;letter-spacing:.12em;padding:13px 22px;border-radius:2px;
+    text-decoration:none;cursor:pointer;transition:.15s ease;border:1.5px solid transparent}
+  .btn-gold{background:var(--gold-grad);color:#1a1406;font-weight:900}
+  .btn-gold:hover{filter:brightness(1.08)}
+  .btn-line{border-color:var(--gold);color:var(--gold)}
+  .btn-line:hover{background:var(--gold);color:#1a1406}
+  .btn-rust{border-color:var(--rust);color:#e8a184}
+  .btn-rust:hover{background:var(--rust);color:#fff}
+
+  /* HERO */
+  .hero .wrap{padding:70px 26px 40px}
+  .eyebrow{display:flex;flex-wrap:wrap;align-items:center;gap:12px;font:700 clamp(.62rem,2.2vw,.74rem)/1.4 var(--sans);
+    letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:26px;max-width:100%}
+  .eyebrow::before{content:"";width:44px;height:2px;background:var(--rust);flex:0 0 auto}
+  h1{font-family:var(--display);font-weight:400;text-transform:uppercase;
+    font-size:clamp(3.2rem,12vw,8rem);line-height:.98;letter-spacing:.01em;margin:0;
+    color:var(--white)}
+  h1 .legacy{position:relative;display:inline-block}
+  h1 .legacy::after{content:"";position:absolute;left:-1%;right:-1%;bottom:.06em;height:.12em;
+    background:var(--rust);transform:rotate(-1.2deg)} /* punk slash under the word */
+  .lede{max-width:52ch;margin:30px 0 34px;font-size:clamp(1.05rem,2.1vw,1.24rem);
+    color:rgba(247,245,239,.82)}
+  .lede b{color:var(--gold);font-weight:700}
   .cta{display:flex;gap:14px;flex-wrap:wrap}
+  /* rotated punk "stamp" */
+  .stamp{position:absolute;top:96px;right:30px;width:132px;height:132px;border:2px solid var(--rust);
+    border-radius:50%;display:grid;place-items:center;text-align:center;transform:rotate(-13deg);
+    color:#e8a184;font:800 .62rem/1.25 var(--sans);letter-spacing:.16em;text-transform:uppercase;
+    opacity:.9}
+  .stamp::before{content:"";position:absolute;inset:7px;border:1px dashed rgba(189,84,51,.55);border-radius:50%}
+  @media(max-width:720px){.stamp{display:none}}
 
-  /* Subtle DNA helix + botanical backdrop, tertiary/understated */
-  .backdrop{position:absolute;inset:0;z-index:1;pointer-events:none}
-  .backdrop .helix{position:absolute;right:-40px;top:-30px;width:min(46vw,520px);opacity:.10;color:var(--denim)}
-  .backdrop .sprig{position:absolute;left:-30px;bottom:-40px;width:min(30vw,300px);opacity:.16;color:var(--sage)}
+  /* street marquee */
+  .marquee{border-block:1px solid var(--line);background:rgba(8,8,12,.55);overflow:hidden;
+    white-space:nowrap;padding:14px 0;max-width:100%}
+  .marquee div{display:inline-block;animation:scroll 26s linear infinite;font-family:var(--display);
+    text-transform:uppercase;font-size:1.15rem;letter-spacing:.06em}
+  .marquee span{color:var(--gold);margin:0 8px}
+  .marquee em{color:var(--rust);font-style:normal;margin:0 22px}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-  /* --- Value props --- */
-  .props{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .props .wrap{padding:64px 24px}
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-  .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 24px}
-  .card .ic{width:34px;height:34px;color:var(--denim);margin-bottom:14px}
-  .card h3{font-family:var(--serif);font-size:1.22rem;margin:0 0 8px;color:var(--indigo)}
-  .card p{margin:0;color:var(--ink-soft);font-size:.98rem}
+  /* value props */
+  .props .wrap{padding:76px 26px}
+  .kicker{font:700 .74rem/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;
+    color:var(--rust);margin:0 0 10px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:34px;
+    border:1px solid var(--line);background:var(--line)}
+  .card{background:linear-gradient(180deg,rgba(29,36,120,.35),rgba(8,8,12,.5));padding:34px 28px}
+  .card .n{font-family:var(--display);font-size:1.1rem;color:var(--gold);opacity:.55}
+  .card h3{font-family:var(--sans);font-weight:900;text-transform:uppercase;letter-spacing:.02em;
+    font-size:1.3rem;margin:14px 0 10px;color:var(--white)}
+  .card p{margin:0;color:rgba(247,245,239,.72);font-size:.98rem}
 
-  /* --- Closing note --- */
-  .note .wrap{padding:70px 24px;text-align:center}
-  .note h2{font-family:var(--serif);font-size:clamp(1.6rem,3.4vw,2.2rem);color:var(--indigo);margin:0 0 14px}
-  .note p{color:var(--ink-soft);max-width:46ch;margin:0 auto 26px}
+  /* manifesto */
+  .manifesto{background:var(--ink);border-block:1px solid var(--line)}
+  .manifesto .wrap{padding:90px 26px;text-align:center}
+  .manifesto h2{font-family:var(--display);text-transform:uppercase;font-weight:400;
+    font-size:clamp(2rem,5.5vw,3.8rem);line-height:1;margin:0 auto;max-width:16ch}
+  .manifesto p{max-width:46ch;margin:20px auto 30px;color:rgba(247,245,239,.72)}
 
-  /* --- Footer --- */
-  footer{border-top:1px solid var(--line);background:var(--paper)}
-  footer .wrap{padding:34px 24px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
-  footer .word{font-family:var(--serif);font-size:1.1rem}
-  footer .word b{color:var(--indigo)}footer .word span{color:var(--sage)}
-  .muted{color:var(--ink-soft);font-size:.86rem}
-  .foot-links{display:flex;gap:20px;font-size:.9rem}
-  .foot-links a{text-decoration:none;color:var(--ink-soft)}
-  .foot-links a:hover{color:var(--indigo)}
+  footer{border-top:1px solid var(--line);background:var(--blue-deep)}
+  footer .wrap{padding:40px 26px;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
+  .foot-links{display:flex;gap:24px;font:700 .78rem/1 var(--sans);text-transform:uppercase;letter-spacing:.1em}
+  .foot-links a{color:rgba(247,245,239,.7);text-decoration:none}
+  .foot-links a:hover{color:var(--gold)}
+  .muted{color:rgba(247,245,239,.4);font-size:.8rem;letter-spacing:.04em}
 
-  @media (max-width:760px){
+  .lede,.card p,.manifesto p{overflow-wrap:break-word}
+  @media(max-width:760px){
     .grid{grid-template-columns:1fr}
-    .bar .btn-ghost{display:none} /* keep the sign-in in the footer on small screens */
+    header .btn-line{display:none}
+  }
+  @media(max-width:600px){
+    .wrap{padding:0 20px}
+    .cta{flex-direction:column;align-items:stretch}
+    .btn{width:100%;justify-content:center;letter-spacing:.08em}
+    h1{font-size:clamp(2.9rem,14vw,8rem)}
+    .marquee div{font-size:1rem}
   }
 </style>
 </head>
 <body>
 
-<!-- reusable wordmark + tiny helix mark -->
+<!-- reusable brand lockup: interlocking GG (modern font) + wordmark -->
 <header>
   <div class="wrap bar">
     <a class="brand" href="index.html" aria-label="GoodGenes home">
-      <svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <!-- stylised double-helix (theme 3, subtle) -->
-        <path d="M7 3c0 4 10 6 10 9s-10 5-10 9" stroke="#2b3a55" stroke-width="1.6" stroke-linecap="round"/>
-        <path d="M17 3c0 4-10 6-10 9s10 5 10 9" stroke="#6f8f6a" stroke-width="1.6" stroke-linecap="round"/>
-        <path d="M8.5 7h7M8.5 12h7M8.5 17h7" stroke="#8ea6c8" stroke-width="1.2" stroke-linecap="round"/>
-      </svg>
-      <span class="word"><b>Good</b><span>Genes</span></span>
+      <span class="mono" aria-hidden="true"><span class="g1">G</span><span class="g2">G</span></span>
+      <span class="word">GoodGenes</span>
     </a>
-    <a class="btn btn-ghost" href="login.html">Team&nbsp;login</a>
+    <a class="btn btn-line" href="login.html">Team login</a>
   </div>
 </header>
 
 <!-- ============ HERO ============ -->
 <section class="hero">
-  <div class="backdrop" aria-hidden="true">
-    <!-- big faint helix, top-right -->
-    <svg class="helix" viewBox="0 0 200 320" fill="none">
-      <path d="M60 10c0 60 80 90 80 150s-80 90-80 150" stroke="currentColor" stroke-width="3"/>
-      <path d="M140 10c0 60-80 90-80 150s80 90 80 150" stroke="currentColor" stroke-width="3"/>
-      <g stroke="currentColor" stroke-width="2">
-        <path d="M72 55h56M78 105h44M78 215h44M72 265h56"/>
-      </g>
-    </svg>
-    <!-- botanical sprig, bottom-left (theme 2) -->
-    <svg class="sprig" viewBox="0 0 200 200" fill="none">
-      <path d="M100 190V40" stroke="currentColor" stroke-width="3"/>
-      <path d="M100 90c-18-4-34-18-38-40 22-2 38 12 44 32M100 120c18-4 34-18 38-40-22-2-38 12-44 32M100 150c-16-4-30-16-34-36 20-2 34 10 40 28" stroke="currentColor" stroke-width="3" fill="none"/>
-    </svg>
-  </div>
   <div class="wrap">
-    <!-- PLACEHOLDER: hero copy — AI best-guess, awaiting Patty -->
-    <span class="eyebrow">Curated pre-loved fashion</span>
-    <h1>Great style is in the <em>genes</em>.</h1>
-    <p class="lede">GoodGenes gives high-quality, gently-worn clothing a second life —
-      hand-selected, authenticated, and ready for its next chapter.</p>
+    <div class="stamp">Pre-loved<br>· First-class ·</div>
+    <!-- PLACEHOLDER copy — drafted in Patty's stated direction, pending her words -->
+    <span class="eyebrow">High-end resale · authenticated</span>
+    <h1>Wear your<br><span class="legacy">legacy</span>.</h1>
+    <p class="lede">Designer fashion with a past — <b>curated, authenticated, and unafraid.</b>
+      The luxury you know, with a shadow side. Second-hand, first-class.</p>
     <div class="cta">
-      <a class="btn btn-solid" href="#about">Discover the closet</a>
-      <a class="btn btn-ghost" href="login.html">Team login</a>
+      <a class="btn btn-gold" href="#about">Enter the collection</a>
+      <a class="btn btn-rust" href="login.html">Team login</a>
     </div>
     <!-- /PLACEHOLDER -->
   </div>
 </section>
+
+<!-- street marquee -->
+<div class="marquee" aria-hidden="true">
+  <div>
+    Authenticated <span>✦</span> Pre-loved <em>/</em> Reborn <span>✦</span> Designer <em>/</em> Curated <span>✦</span> Wear your legacy <em>/</em>
+    Authenticated <span>✦</span> Pre-loved <em>/</em> Reborn <span>✦</span> Designer <em>/</em> Curated <span>✦</span> Wear your legacy <em>/</em>
+  </div>
+</div>
 
 <!-- ============ VALUE PROPS ============ -->
 <section class="props" id="about">
   <div class="wrap">
+    <p class="kicker">The GoodGenes code</p>
+    <h2 style="font-family:var(--display);text-transform:uppercase;font-weight:400;font-size:clamp(1.8rem,4.5vw,3rem);margin:0;line-height:1">Good taste is genetic.</h2>
+    <!-- PLACEHOLDER props -->
     <div class="grid">
-      <!-- PLACEHOLDER: three value props — AI best-guess -->
-      <div class="card">
-        <svg class="ic" viewBox="0 0 24 24" fill="none"><path d="M6 3l6 4 6-4v6l-6 4-6-4V3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 13v8" stroke="currentColor" stroke-width="1.6"/></svg>
-        <h3>Hand-picked</h3>
-        <p>Every piece is chosen by eye — quality labels and enduring style, never fast-fashion filler.</p>
-      </div>
-      <div class="card">
-        <svg class="ic" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <h3>Authenticated &amp; cared-for</h3>
-        <p>Inspected, verified, and freshened before it ships — so it arrives ready to wear.</p>
-      </div>
-      <div class="card">
-        <svg class="ic" viewBox="0 0 24 24" fill="none"><path d="M12 21c6-2 8-7 8-12 0-3-2-6-2-6-4 1-6 4-6 4M12 21c-6-2-8-7-8-12 0-3 2-6 2-6 4 1 6 4 6 4M12 21V9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <h3>Kinder by nature</h3>
-        <p>Giving good clothes a longer life keeps them out of the landfill — good for your closet, good for the planet.</p>
-      </div>
-      <!-- /PLACEHOLDER -->
+      <div class="card"><div class="n">01</div><h3>Curated, not filtered</h3>
+        <p>Every piece hand-selected for the label, the cut, and the story — never fast-fashion filler.</p></div>
+      <div class="card"><div class="n">02</div><h3>Authenticated &amp; unapologetic</h3>
+        <p>Inspected, verified, and ready to wear. Real luxury, no apologies, no pretending.</p></div>
+      <div class="card"><div class="n">03</div><h3>Reborn, not retired</h3>
+        <p>Great clothes deserve a second act. Giving them one is good for your closet and the planet.</p></div>
     </div>
+    <!-- /PLACEHOLDER -->
   </div>
 </section>
 
-<!-- ============ CLOSING NOTE ============ -->
-<section class="note">
+<!-- ============ MANIFESTO ============ -->
+<section class="manifesto">
   <div class="wrap">
-    <!-- PLACEHOLDER: closing line + contact -->
-    <h2>Rooted in good taste.</h2>
-    <p>New finds are added often. Follow along, or reach out — we love matching a
-      piece with its next person.</p>
-    <a class="btn btn-solid" href="mailto:hello@goodgenes.net">Get in touch</a>
-    <!-- /PLACEHOLDER -->
+    <h2 class="gold">Luxury has a<br>shadow side.</h2>
+    <p>High-end on the surface, a little rebellious underneath. New drops land often — come find the one that was always yours.</p>
+    <a class="btn btn-gold" href="#" data-contact>Get on the list</a>
   </div>
 </section>
 
 <!-- ============ FOOTER ============ -->
 <footer>
   <div class="wrap">
-    <div class="word"><b>Good</b><span>Genes</span></div>
+    <a class="brand" href="index.html" aria-label="GoodGenes home">
+      <span class="mono" aria-hidden="true"><span class="g1">G</span><span class="g2">G</span></span>
+      <span class="word" style="font-size:1.15rem">GoodGenes</span>
+    </a>
     <div class="foot-links">
-      <a href="mailto:hello@goodgenes.net">Contact</a><!-- PLACEHOLDER email -->
+      <a href="#" data-contact>Contact</a>
       <a href="login.html">Team login</a>
     </div>
-    <div class="muted">© 2026 GoodGenes · Pre-loved, well-loved.</div>
+    <div class="muted">© 2026 GoodGenes · Wear your legacy.</div>
   </div>
 </footer>
 
+<script>
+  // Contact without publishing a plaintext mailto (harvest-bait guard). Placeholder
+  // address — Patty to confirm the real inbox; assembled at click-time.
+  for (const el of document.querySelectorAll('[data-contact]')) {
+    el.addEventListener('click', function (e) {
+      e.preventDefault();
+      const u = 'hello', d = 'goodgenes.net';
+      window.location.href = 'mailto:' + u + '@' + d;
+    });
+  }
+</script>
 </body>
 </html>
