@@ -1,83 +1,68 @@
 <!doctype html>
 <!--
-  GoodGenes — internal team login (STUB, v2 2026-07-04, Patty's brand direction).
-  Non-functional placeholder: the form does not submit anywhere. Restyled to match
-  the luxury/rebellion/street redesign (deep blue + gold, modern type, rust accent).
-  Real auth is TBD (Google Workspace SSO — see status memory).
+  GoodGenes — internal team sign-in (STUB, v3.1 2026-07-04).
+  Non-functional placeholder styled to the v3.1 design (evening-garden card on
+  warm paper, light serif, camel-case wordmark). Becomes a redirect to the
+  internal app's Google Workspace SSO once deployed.
 -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Team login — GoodGenes</title>
+<title>Team sign-in — GoodGenes</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d1b2a'/%3E%3Cpath d='M16 26 C16 18 16 12 16 7 M16 12 C12 11 10 8 9.5 5.5 C13 6 15.5 8.5 16 12 Z M16 16 C20 15 22 12 22.5 9.5 C19 10 16.5 12.5 16 16 Z' stroke='%23f5c842' stroke-width='1.4' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='24' cy='23' r='1.1' fill='%23f5c842'/%3E%3Ccircle cx='8' cy='20' r='.9' fill='%23f4de8a'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231d2478'/%3E%3Ctext x='32' y='46' font-family='Arial Black,sans-serif' font-size='42' font-weight='900' text-anchor='middle' fill='%23d8a83f'%3EG%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
   :root{
-    --blue:#1d2478;--blue-deep:#0d1030;--ink:#08080c;
-    --gold:#d8a83f;--white:#f7f5ef;--rust:#bd5433;--line:rgba(216,168,63,.22);
-    --gold-grad:linear-gradient(120deg,#f6e2a0,#e7c15f 40%,#d8a83f 62%,#a9781f);
-    --display:"Anton",Impact,sans-serif;--sans:"Archivo","Helvetica Neue",Arial,sans-serif;
+    --navy:#0d1b2a;--navy-2:#16263c;--gold:#c8920a;--gold-bright:#f5c842;
+    --gold-soft:#f4de8a;--rust:#bd5433;--paper:#faf8f2;--ink:#2a303a;--ink-soft:#61697a;
+    --serif:"Cormorant Garamond",Palatino,Georgia,serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   }
   *{box-sizing:border-box}
-  body{margin:0;min-height:100vh;font-family:var(--sans);color:var(--white);
-    display:flex;align-items:center;justify-content:center;padding:24px;
-    background:
-      radial-gradient(900px 600px at 80% -10%, #2a32a0 0%, transparent 55%),
-      linear-gradient(180deg,var(--blue),var(--blue-deep) 55%,var(--ink));}
-  body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.5;
-    background-image:
-      radial-gradient(1.5px 1.5px at 25% 30%, rgba(244,222,138,.7), transparent),
-      radial-gradient(1px 1px at 70% 60%, rgba(216,168,63,.6), transparent),
-      radial-gradient(1.5px 1.5px at 85% 25%, rgba(244,222,138,.5), transparent);
-    background-size:480px 480px,420px 420px,560px 560px;}
-  .card{position:relative;width:100%;max-width:400px;background:rgba(8,8,12,.5);
-    border:1px solid var(--line);border-radius:4px;padding:40px 34px;
-    box-shadow:0 30px 80px -30px rgba(0,0,0,.8)}
-  .brand{display:flex;align-items:center;gap:11px;justify-content:center;margin-bottom:6px;text-decoration:none}
-  .mono{position:relative;width:40px;height:40px;display:grid;place-items:center}
-  .mono span{position:absolute;font-family:var(--display);font-size:38px;line-height:1;
-    background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .mono .g1{transform:translateX(-6px)} .mono .g2{transform:translateX(6px) rotate(180deg)}
-  .word{font-family:var(--sans);font-weight:900;text-transform:uppercase;letter-spacing:.02em;
-    font-size:1.4rem;background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .sub{text-align:center;color:rgba(247,245,239,.55);font-size:.76rem;letter-spacing:.22em;
-    text-transform:uppercase;margin:6px 0 30px}
-  label{display:block;font:700 .72rem/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;
-    color:var(--gold);margin:0 0 8px}
-  .field{margin-bottom:18px}
-  input{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:3px;
-    font:400 1rem/1.2 var(--sans);background:rgba(13,16,48,.6);color:var(--white)}
-  input::placeholder{color:rgba(247,245,239,.35)}
-  input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(216,168,63,.18)}
-  .btn{width:100%;padding:14px;border:0;border-radius:3px;background:var(--gold-grad);
-    color:#1a1406;font:900 .85rem/1 var(--sans);text-transform:uppercase;letter-spacing:.12em;cursor:pointer}
-  .btn:hover{filter:brightness(1.08)}
-  .stub-note{margin:18px 0 0;padding:10px 12px;border-radius:3px;border:1px dashed rgba(189,84,51,.5);
-    color:#e8a184;font-size:.72rem;text-align:center;letter-spacing:.06em;text-transform:uppercase}
-  .back{display:block;text-align:center;margin-top:22px;color:rgba(247,245,239,.55);
-    font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none}
-  .back:hover{color:var(--gold)}
+  body{margin:0;font-family:var(--sans);background:var(--paper);color:var(--ink);
+       min-height:100vh;display:flex;flex-direction:column;align-items:center;
+       justify-content:center;padding:24px;line-height:1.6}
+  .card{background:linear-gradient(170deg,var(--navy),var(--navy-2));color:#e9e4d6;
+        border-radius:22px;padding:42px 38px;max-width:400px;width:100%;
+        box-shadow:0 30px 70px -30px rgba(13,27,42,.55);position:relative;overflow:hidden;text-align:center}
+  .card .fireflies{position:absolute;inset:0;opacity:.6;background-image:
+    radial-gradient(1.2px 1.2px at 15% 25%, rgba(245,200,66,.9) 50%, transparent 51%),
+    radial-gradient(1px 1px at 40% 78%, rgba(244,222,138,.7) 50%, transparent 51%),
+    radial-gradient(1.4px 1.4px at 62% 16%, rgba(245,200,66,.8) 50%, transparent 51%),
+    radial-gradient(1px 1px at 82% 55%, rgba(244,222,138,.6) 50%, transparent 51%),
+    radial-gradient(1.2px 1.2px at 26% 55%, rgba(245,200,66,.7) 50%, transparent 51%)}
+  .card > *{position:relative;z-index:2}
+  .word{font-family:var(--serif);font-weight:500;font-size:1.9rem;color:#fbf7ea}
+  .word em{font-style:normal;color:var(--gold-bright)}
+  .tag{font-family:var(--serif);font-style:italic;font-size:1rem;color:#a5afc2;margin:2px 0 26px}
+  label{display:block;text-align:left;font:500 .78rem/1 var(--sans);color:#8d99ad;margin:14px 0 6px}
+  input{width:100%;font:inherit;font-size:.98rem;color:#f3efe4;background:rgba(255,255,255,.06);
+        border:1px solid rgba(244,222,138,.25);border-radius:10px;padding:11px 13px}
+  input::placeholder{color:#6d7a90}
+  button{width:100%;margin-top:20px;font:500 .98rem/1 var(--sans);padding:13px;
+         border-radius:999px;border:0;cursor:pointer;background:var(--gold);color:#fff}
+  button:hover{background:var(--rust)}
+  .stub{font-size:.8rem;color:#8d99ad;margin-top:16px}
+  .back{margin-top:22px;font-size:.9rem}
+  .back a{color:var(--ink-soft)}
 </style>
 </head>
 <body>
   <div class="card">
-    <a class="brand" href="index.html" aria-label="GoodGenes home">
-      <span class="mono" aria-hidden="true"><span class="g1">G</span><span class="g2">G</span></span>
-      <span class="word">GoodGenes</span>
-    </a>
-    <p class="sub">Team sign-in · internal</p>
-    <form onsubmit="event.preventDefault()">
-      <div class="field"><label for="email">Email</label>
-        <input id="email" type="email" autocomplete="username" placeholder="you@goodgenes.net"></div>
-      <div class="field"><label for="pw">Password</label>
-        <input id="pw" type="password" autocomplete="current-password" placeholder="••••••••"></div>
-      <button class="btn" type="submit">Sign in</button>
+    <div class="fireflies" aria-hidden="true"></div>
+    <div class="word">Good<em>Genes</em></div>
+    <div class="tag">Team sign-in · Wear your legacy.</div>
+    <form onsubmit="return false">
+      <label for="em">Work email</label>
+      <input id="em" type="email" placeholder="you@goodgenes.net" autocomplete="username">
+      <button type="submit">Continue with Google</button>
     </form>
-    <p class="stub-note">Placeholder — sign-in isn't wired up yet</p>
-    <a class="back" href="index.html">← Back to goodgenes.net</a>
+    <div class="stub">Sign-in arrives with the team app — this page isn't wired up yet.</div>
   </div>
+  <div class="back"><a href="index.html">← back to goodgenes.net</a></div>
 </body>
 </html>

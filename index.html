@@ -1,256 +1,395 @@
 <!doctype html>
 <!--
-  GoodGenes — landing page (v2, 2026-07-04) — PATTY'S BRAND DIRECTION.
-  ------------------------------------------------------------------
-  Brief (Patty's voice): "The font should be more modern. Luxury meets
-  rebellion meets street vibe. High-end aesthetic with a shadow side of
-  punk rock." Keeps her existing identity: deep-blue + gold shimmer,
-  interlocking GG monogram, tagline "Wear your legacy."
-  Palette (her order, most->least): deep blue + gold, black, white, rust/terracotta.
+  GoodGenes — landing page v3.1 (2026-07-04, Fable build, after Jeff's correction)
+  ────────────────────────────────────────────────────────────────────
+  v3.0's Kepler-orbit hero is GONE — the spacewar read was Jeff's own
+  association with Patty's starfield PNG, not her identity. Direction
+  (Jeff, quoting Patty's world): gardening, botany, life sciences,
+  poetry, mindfulness, punk rock. By women, for women. NOT space.
 
-  Type is now MODERN: Anton (street/poster display) + Archivo (modern grotesk).
-  The GG monogram is built from the Anton 'G' (upright + rotated) so the mark and
-  the wordmark share one modern typeface.
+  So: the gold specks stay (they are literally her logo PNG) but read as
+  FIREFLIES over an evening garden — drifting up, softly. Botanical
+  line-art in gold. Type is a light serif (Cormorant Garamond — poetic,
+  feminine; her original logo was a classic serif), sentence case
+  everywhere, wordmark camel-cased "GoodGenes". Rust appears in small
+  punk-adjacent touches only. Palette unchanged (docs/brand/README.md).
 
-  Copy is AI-drafted IN PATTY'S STATED DIRECTION, pending her final words.
+  ⚠ ALL COPY IS AI PLACEHOLDER (Jeff driving; Patty owns the voice —
+  memory/feedback_brand_voice.md). Self-contained except Google Fonts.
+  Mailto JS-assembled. Animation honors prefers-reduced-motion.
 -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>GoodGenes — wear your legacy</title>
-<meta name="description" content="High-end fashion with a past — curated, authenticated, reborn. Wear your legacy.">
+<meta name="description" content="GoodGenes is a curated resale house for beautiful pre-loved fashion — size-inclusive, carefully authenticated, and ready for its next chapter.">
+<meta property="og:title" content="GoodGenes — wear your legacy">
+<meta property="og:description" content="Beautiful pre-loved pieces, every size, ready for their next chapter.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://goodgenes.net/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d1b2a'/%3E%3Cpath d='M16 26 C16 18 16 12 16 7 M16 12 C12 11 10 8 9.5 5.5 C13 6 15.5 8.5 16 12 Z M16 16 C20 15 22 12 22.5 9.5 C19 10 16.5 12.5 16 16 Z' stroke='%23f5c842' stroke-width='1.4' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='24' cy='23' r='1.1' fill='%23f5c842'/%3E%3Ccircle cx='8' cy='20' r='.9' fill='%23f4de8a'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231d2478'/%3E%3Ctext x='32' y='46' font-family='Arial Black,sans-serif' font-size='42' font-weight='900' text-anchor='middle' fill='%23d8a83f'%3EG%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --blue:#1d2478;          /* Patty's deep royal blue */
-    --blue-deep:#0d1030;     /* shadow */
-    --ink:#08080c;           /* punk black */
-    --gold:#d8a83f;
-    --gold-lite:#f4de8a;
-    --white:#f7f5ef;
-    --rust:#bd5433;          /* terracotta — the rebellion accent */
-    --line:rgba(216,168,63,.22);
-    --gold-grad:linear-gradient(120deg,#f6e2a0 0%,#e7c15f 38%,#d8a83f 60%,#a9781f 100%);
-    --display:"Anton",Impact,"Arial Narrow Bold",sans-serif;
-    --sans:"Archivo","Helvetica Neue",Arial,sans-serif;
+    /* docs/brand/README.md — Nocturne-blue navy + two golds + warm white + rust */
+    --navy:#0d1b2a;
+    --navy-2:#16263c;
+    --gold:#c8920a;
+    --gold-bright:#f5c842;
+    --gold-soft:#f4de8a;
+    --rust:#bd5433;          /* the punk-rock ember — small doses */
+    --paper:#faf8f2;
+    --paper-2:#f2eee3;
+    --ink:#2a303a;
+    --ink-soft:#61697a;
+    --line:rgba(13,27,42,.12);
+    --shadow:0 20px 50px -28px rgba(13,27,42,.45);
+    --serif:"Cormorant Garamond",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   }
   *{box-sizing:border-box}
-  html{overflow-x:clip}
-  html,body{margin:0;width:100%;max-width:100%;overflow-x:clip}
-  body{
-    font-family:var(--sans);color:var(--white);line-height:1.6;
-    background:
-      radial-gradient(1200px 700px at 78% -8%, #2a32a0 0%, transparent 55%),
-      radial-gradient(900px 700px at 8% 110%, #241a3a 0%, transparent 55%),
-      linear-gradient(180deg, var(--blue) 0%, var(--blue-deep) 46%, var(--ink) 100%);
-    background-attachment:fixed;
-    -webkit-font-smoothing:antialiased;
-  }
-  /* gold shimmer speckle, echoing her logo bg */
-  body::before{
-    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
-    background-image:
-      radial-gradient(1.5px 1.5px at 20% 30%, rgba(244,222,138,.7), transparent),
-      radial-gradient(1px 1px at 70% 20%, rgba(216,168,63,.6), transparent),
-      radial-gradient(1.5px 1.5px at 85% 65%, rgba(244,222,138,.5), transparent),
-      radial-gradient(1px 1px at 35% 80%, rgba(216,168,63,.5), transparent),
-      radial-gradient(1px 1px at 55% 50%, rgba(244,222,138,.4), transparent);
-    background-size:520px 520px,400px 400px,600px 600px,480px 480px,360px 360px;
-  }
-  .wrap{max-width:1120px;margin:0 auto;padding:0 26px;position:relative;z-index:1}
+  html,body{margin:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.7;font-size:16.5px;-webkit-font-smoothing:antialiased}
   a{color:inherit}
-  .gold{background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  ::selection{background:var(--gold-soft);color:var(--navy)}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
 
-  /* wordmark + monogram (shared modern typeface) */
-  .brand{display:flex;align-items:center;gap:13px;text-decoration:none}
-  .mono{position:relative;width:42px;height:42px;flex:0 0 auto;display:grid;place-items:center}
-  .mono span{position:absolute;font-family:var(--display);font-size:40px;line-height:1;
-    background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .mono .g1{transform:translateX(-6px)}
-  .mono .g2{transform:translateX(6px) rotate(180deg)}
-  .word{font-family:var(--sans);font-weight:900;font-size:1.45rem;letter-spacing:.02em;
-    text-transform:uppercase;background:var(--gold-grad);-webkit-background-clip:text;
-    background-clip:text;color:transparent}
+  /* ── top bar ─────────────────────────────────────────── */
+  header{position:sticky;top:0;z-index:20;background:rgba(250,248,242,.86);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--line)}
+  .bar{display:flex;align-items:center;justify-content:space-between;height:66px;gap:12px}
+  .brand{display:flex;align-items:center;gap:9px;text-decoration:none}
+  .brand svg{width:26px;height:26px;flex:0 0 auto}
+  .word{font-family:var(--serif);font-weight:500;font-size:1.5rem;letter-spacing:.01em;color:var(--navy)}
+  .word em{font-style:normal;color:var(--gold)}
+  nav.top{display:flex;gap:2px;align-items:center}
+  nav.top a{font:500 .9rem/1 var(--sans);color:var(--ink-soft);text-decoration:none;padding:9px 12px;border-radius:999px}
+  nav.top a:hover{color:var(--navy);background:var(--paper-2)}
+  @media (max-width:640px){nav.top a.navlink{display:none}}
+  .btn{display:inline-flex;align-items:center;gap:8px;font:500 .92rem/1 var(--sans);padding:12px 22px;border-radius:999px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:.15s ease}
+  .btn-solid{background:var(--gold);color:#fff}
+  .btn-solid:hover{background:var(--rust)}
+  .btn-ghost{border-color:var(--line);color:var(--navy);background:transparent}
+  .btn-ghost:hover{background:#fff;box-shadow:var(--shadow)}
+  .hero .btn-ghost{border-color:rgba(244,222,138,.35);color:var(--gold-soft)}
+  .hero .btn-ghost:hover{background:rgba(244,222,138,.08);box-shadow:none}
 
-  header{position:sticky;top:0;z-index:20;backdrop-filter:blur(9px);
-    background:rgba(13,16,48,.6);border-bottom:1px solid var(--line)}
-  .bar{display:flex;align-items:center;justify-content:space-between;height:74px}
-  .btn{display:inline-flex;align-items:center;gap:8px;font:700 .82rem/1 var(--sans);
-    text-transform:uppercase;letter-spacing:.12em;padding:13px 22px;border-radius:2px;
-    text-decoration:none;cursor:pointer;transition:.15s ease;border:1.5px solid transparent}
-  .btn-gold{background:var(--gold-grad);color:#1a1406;font-weight:900}
-  .btn-gold:hover{filter:brightness(1.08)}
-  .btn-line{border-color:var(--gold);color:var(--gold)}
-  .btn-line:hover{background:var(--gold);color:#1a1406}
-  .btn-rust{border-color:var(--rust);color:#e8a184}
-  .btn-rust:hover{background:var(--rust);color:#fff}
+  /* ── hero: evening garden, fireflies (her gold-speck PNG, alive) ── */
+  .hero{position:relative;overflow:hidden;background:linear-gradient(170deg,var(--navy) 0%,var(--navy-2) 72%,#20334e 100%);color:#f3efe4}
+  .hero canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .hero .sprig{position:absolute;right:-40px;bottom:-30px;width:min(46vw,460px);opacity:.5;z-index:1}
+  @media (max-width:700px){.hero .sprig{right:-60px;bottom:-40px;width:70vw;opacity:.35}}
+  .hero .inner{position:relative;z-index:2;max-width:1040px;margin:0 auto;padding:92px 24px 104px}
+  .hero .copy{max-width:600px}
+  @media (max-width:700px){.hero .inner{padding:68px 24px 80px}.hero .copy{text-align:center;margin:0 auto}}
+  .eyebrow{font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--gold-soft)}
+  h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.6rem,6vw,4rem);line-height:1.08;letter-spacing:.005em;margin:.28em 0 .22em;color:#fbf7ea}
+  h1 em{font-style:italic;color:var(--gold-bright)}
+  .tagline{font-size:clamp(1.02rem,2vw,1.14rem);color:#ccd4e0;max-width:46ch;margin:0 0 30px}
+  @media (max-width:700px){.tagline{margin-left:auto;margin-right:auto}}
+  .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+  @media (max-width:700px){.hero .cta{justify-content:center}}
 
-  /* HERO */
-  .hero .wrap{padding:70px 26px 40px}
-  .eyebrow{display:flex;flex-wrap:wrap;align-items:center;gap:12px;font:700 clamp(.62rem,2.2vw,.74rem)/1.4 var(--sans);
-    letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:26px;max-width:100%}
-  .eyebrow::before{content:"";width:44px;height:2px;background:var(--rust);flex:0 0 auto}
-  h1{font-family:var(--display);font-weight:400;text-transform:uppercase;
-    font-size:clamp(3.2rem,12vw,8rem);line-height:.98;letter-spacing:.01em;margin:0;
-    color:var(--white)}
-  h1 .legacy{position:relative;display:inline-block}
-  h1 .legacy::after{content:"";position:absolute;left:-1%;right:-1%;bottom:.06em;height:.12em;
-    background:var(--rust);transform:rotate(-1.2deg)} /* punk slash under the word */
-  .lede{max-width:52ch;margin:30px 0 34px;font-size:clamp(1.05rem,2.1vw,1.24rem);
-    color:rgba(247,245,239,.82)}
-  .lede b{color:var(--gold);font-weight:700}
-  .cta{display:flex;gap:14px;flex-wrap:wrap}
-  /* rotated punk "stamp" */
-  .stamp{position:absolute;top:96px;right:30px;width:132px;height:132px;border:2px solid var(--rust);
-    border-radius:50%;display:grid;place-items:center;text-align:center;transform:rotate(-13deg);
-    color:#e8a184;font:800 .62rem/1.25 var(--sans);letter-spacing:.16em;text-transform:uppercase;
-    opacity:.9}
-  .stamp::before{content:"";position:absolute;inset:7px;border:1px dashed rgba(189,84,51,.55);border-radius:50%}
-  @media(max-width:720px){.stamp{display:none}}
+  /* ── sections ────────────────────────────────────────── */
+  section{padding:76px 0}
+  .kicker{font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--gold)}
+  h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.8rem,3.4vw,2.4rem);letter-spacing:.005em;color:var(--navy);margin:.25em 0 .45em}
+  .lede{color:var(--ink-soft);max-width:64ch}
 
-  /* street marquee */
-  .marquee{border-block:1px solid var(--line);background:rgba(8,8,12,.55);overflow:hidden;
-    white-space:nowrap;padding:14px 0;max-width:100%}
-  .marquee div{display:inline-block;animation:scroll 26s linear infinite;font-family:var(--display);
-    text-transform:uppercase;font-size:1.15rem;letter-spacing:.06em}
-  .marquee span{color:var(--gold);margin:0 8px}
-  .marquee em{color:var(--rust);font-style:normal;margin:0 22px}
-  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-top:34px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px 26px;box-shadow:0 10px 30px -26px rgba(13,27,42,.4)}
+  .card svg{width:36px;height:36px;margin-bottom:14px}
+  .card h3{margin:0 0 8px;font-family:var(--serif);font-weight:600;font-size:1.22rem;color:var(--navy)}
+  .card p{margin:0;color:var(--ink-soft);font-size:.95rem}
 
-  /* value props */
-  .props .wrap{padding:76px 26px}
-  .kicker{font:700 .74rem/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;
-    color:var(--rust);margin:0 0 10px}
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:34px;
-    border:1px solid var(--line);background:var(--line)}
-  .card{background:linear-gradient(180deg,rgba(29,36,120,.35),rgba(8,8,12,.5));padding:34px 28px}
-  .card .n{font-family:var(--display);font-size:1.1rem;color:var(--gold);opacity:.55}
-  .card h3{font-family:var(--sans);font-weight:900;text-transform:uppercase;letter-spacing:.02em;
-    font-size:1.3rem;margin:14px 0 10px;color:var(--white)}
-  .card p{margin:0;color:rgba(247,245,239,.72);font-size:.98rem}
+  .story{background:var(--paper-2)}
+  .story .cols{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center}
+  @media (max-width:780px){.story .cols{grid-template-columns:1fr}}
+  .story blockquote{margin:24px 0 0;padding-left:18px;border-left:3px solid var(--rust);font-family:var(--serif);font-style:italic;font-size:1.22rem;line-height:1.5;color:var(--ink)}
+  .story blockquote small{font-family:var(--sans);font-style:normal;font-size:.78rem;color:var(--ink-soft)}
+  .vinebox{display:flex;justify-content:center}
+  .vinebox svg{width:min(260px,72%);height:auto}
 
-  /* manifesto */
-  .manifesto{background:var(--ink);border-block:1px solid var(--line)}
-  .manifesto .wrap{padding:90px 26px;text-align:center}
-  .manifesto h2{font-family:var(--display);text-transform:uppercase;font-weight:400;
-    font-size:clamp(2rem,5.5vw,3.8rem);line-height:1;margin:0 auto;max-width:16ch}
-  .manifesto p{max-width:46ch;margin:20px auto 30px;color:rgba(247,245,239,.72)}
+  .partners .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:30px}
+  .tile{border:1px solid var(--line);border-radius:16px;padding:22px;background:#fff}
+  .tile h3{margin:0 0 6px;font-family:var(--serif);font-weight:600;font-size:1.12rem;color:var(--navy)}
+  .tile p{margin:0;font-size:.92rem;color:var(--ink-soft)}
 
-  footer{border-top:1px solid var(--line);background:var(--blue-deep)}
-  footer .wrap{padding:40px 26px;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
-  .foot-links{display:flex;gap:24px;font:700 .78rem/1 var(--sans);text-transform:uppercase;letter-spacing:.1em}
-  .foot-links a{color:rgba(247,245,239,.7);text-decoration:none}
-  .foot-links a:hover{color:var(--gold)}
-  .muted{color:rgba(247,245,239,.4);font-size:.8rem;letter-spacing:.04em}
-
-  .lede,.card p,.manifesto p{overflow-wrap:break-word}
-  @media(max-width:760px){
-    .grid{grid-template-columns:1fr}
-    header .btn-line{display:none}
-  }
-  @media(max-width:600px){
-    .wrap{padding:0 20px}
-    .cta{flex-direction:column;align-items:stretch}
-    .btn{width:100%;justify-content:center;letter-spacing:.08em}
-    h1{font-size:clamp(2.9rem,14vw,8rem)}
-    .marquee div{font-size:1rem}
-  }
+  /* ── footer: the garden at dusk again ─────────────────── */
+  footer{background:linear-gradient(180deg,var(--navy-2),var(--navy));color:#aab4c6;position:relative;overflow:hidden}
+  footer .wrap{position:relative;z-index:2;padding:56px 24px 40px;display:flex;flex-wrap:wrap;gap:28px;align-items:center;justify-content:space-between}
+  footer .fword{font-family:var(--serif);font-weight:500;font-size:1.45rem;color:#f3efe4}
+  footer .fword em{font-style:normal;color:var(--gold-bright)}
+  footer .ftag{font-family:var(--serif);font-style:italic;font-size:1rem;color:#94a0b4;margin-top:2px}
+  footer nav{display:flex;gap:18px;flex-wrap:wrap;font-size:.88rem}
+  footer a{color:#c8d0dd;text-decoration:none}
+  footer a:hover{color:var(--gold-bright)}
+  footer .fireflies{position:absolute;inset:0;opacity:.5;background-image:
+    radial-gradient(1.2px 1.2px at 12% 30%, rgba(245,200,66,.9) 50%, transparent 51%),
+    radial-gradient(1px 1px at 32% 70%, rgba(244,222,138,.7) 50%, transparent 51%),
+    radial-gradient(1.4px 1.4px at 55% 25%, rgba(245,200,66,.8) 50%, transparent 51%),
+    radial-gradient(1px 1px at 71% 62%, rgba(244,222,138,.6) 50%, transparent 51%),
+    radial-gradient(1.3px 1.3px at 88% 38%, rgba(245,200,66,.85) 50%, transparent 51%)}
+  .note{font-size:.8rem;color:#78849a;width:100%;border-top:1px solid rgba(255,255,255,.08);padding-top:18px}
 </style>
 </head>
 <body>
 
-<!-- reusable brand lockup: interlocking GG (modern font) + wordmark -->
 <header>
   <div class="wrap bar">
-    <a class="brand" href="index.html" aria-label="GoodGenes home">
-      <span class="mono" aria-hidden="true"><span class="g1">G</span><span class="g2">G</span></span>
-      <span class="word">GoodGenes</span>
+    <a class="brand" href="#top" aria-label="GoodGenes home">
+      <!-- The mark: a gold seedling — two leaves on a stem, a firefly beside it.
+           Botany first; the double-leaf is the gentlest possible gene nod. -->
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M16 27 C16 19 16 12 16 7 M16 13 C12 12 9.5 9 9 6 C13 6.5 15.5 9 16 13 Z M16 17 C20 16 22.5 13 23 10 C19 10.5 16.5 13 16 17 Z"
+              stroke="#c8920a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <circle cx="24.5" cy="23" r="1.2" fill="#f5c842"/>
+        <circle cx="7.5" cy="20" r=".9" fill="#f4de8a"/>
+      </svg>
+      <span class="word">Good<em>Genes</em></span>
     </a>
-    <a class="btn btn-line" href="login.html">Team login</a>
+    <nav class="top">
+      <a class="navlink" href="#about">What we do</a>
+      <a class="navlink" href="#story">Our story</a>
+      <a class="navlink" href="#partners">Partners</a>
+      <a class="btn btn-ghost" href="login.html" style="padding:9px 16px">Team sign-in</a>
+    </nav>
   </div>
 </header>
 
-<!-- ============ HERO ============ -->
-<section class="hero">
-  <div class="wrap">
-    <div class="stamp">Pre-loved<br>· First-class ·</div>
-    <!-- PLACEHOLDER copy — drafted in Patty's stated direction, pending her words -->
-    <span class="eyebrow">High-end resale · authenticated</span>
-    <h1>Wear your<br><span class="legacy">legacy</span>.</h1>
-    <p class="lede">Designer fashion with a past — <b>curated, authenticated, and unafraid.</b>
-      The luxury you know, with a shadow side. Second-hand, first-class.</p>
-    <div class="cta">
-      <a class="btn btn-gold" href="#about">Enter the collection</a>
-      <a class="btn btn-rust" href="login.html">Team login</a>
+<!-- ══ HERO — evening garden, fireflies rising ══  PLACEHOLDER copy -->
+<div class="hero" id="top">
+  <canvas id="garden" aria-hidden="true"></canvas>
+  <!-- botanical line-art: a long grass/fern sprig leaning into frame -->
+  <svg class="sprig" viewBox="0 0 400 420" fill="none" aria-hidden="true">
+    <g stroke="#c8920a" stroke-width="1.1" stroke-linecap="round" opacity=".8">
+      <path d="M60 420 C110 330 170 240 300 120"/>
+      <path d="M132 306 C160 296 188 270 198 240 C168 250 142 276 132 306 Z"/>
+      <path d="M172 258 C204 252 232 230 244 202 C212 210 184 232 172 258 Z"/>
+      <path d="M216 210 C246 206 274 186 286 160 C256 166 228 186 216 210 Z"/>
+      <path d="M118 330 C96 316 84 294 82 270 C104 282 118 304 118 330 Z"/>
+      <path d="M158 282 C136 268 124 246 122 222 C144 234 158 256 158 282 Z"/>
+      <path d="M202 234 C182 220 170 198 168 174 C190 186 204 208 202 234 Z"/>
+      <path d="M250 172 C232 156 222 134 222 110 C243 124 255 146 250 172 Z"/>
+      <path d="M300 120 C296 96 300 72 312 52 C322 74 318 98 300 120 Z"/>
+    </g>
+  </svg>
+  <div class="inner">
+    <div class="copy">
+      <span class="eyebrow">Curated pre-loved fashion</span>
+      <h1>Great clothes carry<br><em>good genes</em>.</h1>
+      <p class="tagline">Beautiful pre-owned pieces — found with patience,
+      authenticated with care, and set back into the world. Premium denim to
+      evening silk, in every size. <strong>Wear your legacy.</strong></p>
+      <div class="cta">
+        <a class="btn btn-solid" href="#about">Step inside</a>
+        <a class="btn btn-ghost" href="#contact">Say hello</a>
+      </div>
     </div>
-    <!-- /PLACEHOLDER -->
-  </div>
-</section>
-
-<!-- street marquee -->
-<div class="marquee" aria-hidden="true">
-  <div>
-    Authenticated <span>✦</span> Pre-loved <em>/</em> Reborn <span>✦</span> Designer <em>/</em> Curated <span>✦</span> Wear your legacy <em>/</em>
-    Authenticated <span>✦</span> Pre-loved <em>/</em> Reborn <span>✦</span> Designer <em>/</em> Curated <span>✦</span> Wear your legacy <em>/</em>
   </div>
 </div>
 
-<!-- ============ VALUE PROPS ============ -->
-<section class="props" id="about">
+<!-- ══ WHAT WE DO ══  PLACEHOLDER copy -->
+<section id="about">
   <div class="wrap">
-    <p class="kicker">The GoodGenes code</p>
-    <h2 style="font-family:var(--display);text-transform:uppercase;font-weight:400;font-size:clamp(1.8rem,4.5vw,3rem);margin:0;line-height:1">Good taste is genetic.</h2>
-    <!-- PLACEHOLDER props -->
-    <div class="grid">
-      <div class="card"><div class="n">01</div><h3>Curated, not filtered</h3>
-        <p>Every piece hand-selected for the label, the cut, and the story — never fast-fashion filler.</p></div>
-      <div class="card"><div class="n">02</div><h3>Authenticated &amp; unapologetic</h3>
-        <p>Inspected, verified, and ready to wear. Real luxury, no apologies, no pretending.</p></div>
-      <div class="card"><div class="n">03</div><h3>Reborn, not retired</h3>
-        <p>Great clothes deserve a second act. Giving them one is good for your closet and the planet.</p></div>
+    <span class="kicker">What we do</span>
+    <h2>Resale, tended like a garden</h2>
+    <p class="lede">Every piece in the GoodGenes closet is chosen on merit — the
+    make, the fabric, the cut — then verified, documented, and listed with care
+    across the marketplaces you already love.</p>
+    <div class="cards">
+      <div class="card">
+        <!-- a hanger with a leaf on the hook: clothing, chosen with care -->
+        <svg viewBox="0 0 36 36" fill="none" aria-hidden="true"><path d="M18 12 C18 9.5 19.5 8.5 21 8.5 M18 12 L6 22 C5 23 5.5 25 7.5 25 L28.5 25 C30.5 25 31 23 30 22 L18 12 Z" stroke="#c8920a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="25.5" cy="6.5" rx="4.6" ry="2.1" transform="rotate(-24 25.5 6.5)" stroke="#c8920a" stroke-width="1.2"/></svg>
+        <h3>Chosen, one at a time</h3>
+        <p>Premium denim and elevated pieces picked by hand against a written
+        standard — never bought by the pound.</p>
+      </div>
+      <div class="card">
+        <!-- three blooms, different sizes -->
+        <svg viewBox="0 0 36 36" fill="none" aria-hidden="true"><circle cx="10" cy="24" r="4" stroke="#c8920a" stroke-width="1.5"/><circle cx="19" cy="12" r="3" stroke="#c8920a" stroke-width="1.5"/><circle cx="28" cy="21" r="2.2" stroke="#c8920a" stroke-width="1.5"/><path d="M10 28 L10 33 M19 15 L19 33 M28 23 L28 33" stroke="#c8920a" stroke-width="1.2" stroke-linecap="round"/></svg>
+        <h3>Every size, on purpose</h3>
+        <p>Style doesn't stop at a size 12 — and neither do we. Finding beautiful
+        plus-size pieces is the heart of the hunt, not an afterthought.</p>
+      </div>
+      <div class="card">
+        <!-- pressed-leaf specimen card -->
+        <svg viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="7" y="5" width="22" height="26" rx="2.5" stroke="#c8920a" stroke-width="1.5"/><path d="M18 25 C18 19 18 14 18 10 M18 15 C15 14 13 11.5 12.5 9 C15.5 9.5 17.5 12 18 15 Z M18 18 C21 17 23 14.5 23.5 12 C20.5 12.5 18.5 15 18 18 Z" stroke="#c8920a" stroke-width="1.2" stroke-linecap="round"/></svg>
+        <h3>Documented like a specimen</h3>
+        <p>Fabric content, provenance, true measurements, honest condition —
+        recorded with a scientist's patience before anything is listed.</p>
+      </div>
     </div>
-    <!-- /PLACEHOLDER -->
   </div>
 </section>
 
-<!-- ============ MANIFESTO ============ -->
-<section class="manifesto">
+<!-- ══ STORY ══  PLACEHOLDER copy (Patty's origin story, in her words, goes here) -->
+<section class="story" id="story">
+  <div class="wrap cols">
+    <div>
+      <span class="kicker">Our story</span>
+      <h2>From plant genetics to hemlines</h2>
+      <p class="lede">GoodGenes was founded by a plant biologist who spent years
+      reading what makes living things last — then noticed the same truth in a
+      well-made garment. Good structure endures. Good materials age with grace.
+      The name isn't a pun; it's a thesis.</p>
+      <blockquote>“A great pair of jeans is like a good genome — you can tell,
+      generations later, that somebody got it right.”
+      <br><small>— placeholder sentiment, awaiting Patty's real words</small></blockquote>
+    </div>
+    <div class="vinebox">
+      <!-- a climbing sprig: gently curving stem, alternating almond leaves,
+           a few gold berries. Botany first; the gene nod stays in the words. -->
+      <svg viewBox="0 0 200 280" fill="none" aria-hidden="true">
+        <path d="M104 268 C88 224 116 196 100 152 C86 114 112 84 100 44 C96 30 98 18 102 8"
+              stroke="#c8920a" stroke-width="1.5" stroke-linecap="round"/>
+        <g stroke="#c8920a" stroke-width="1.3" fill="none">
+          <ellipse cx="72" cy="232" rx="19" ry="7" transform="rotate(-28 72 232)"/>
+          <ellipse cx="134" cy="204" rx="17" ry="6.5" transform="rotate(24 134 204)"/>
+          <ellipse cx="68" cy="168" rx="18" ry="6.8" transform="rotate(-24 68 168)"/>
+          <ellipse cx="132" cy="132" rx="16" ry="6" transform="rotate(26 132 132)"/>
+          <ellipse cx="70" cy="96" rx="15" ry="5.6" transform="rotate(-30 70 96)"/>
+          <ellipse cx="128" cy="64" rx="13" ry="5" transform="rotate(28 128 64)"/>
+        </g>
+        <g stroke="#c8920a" stroke-width="1.1" stroke-linecap="round">
+          <path d="M97 244 L86 238 M104 214 L118 208 M96 180 L84 173 M102 144 L117 138 M98 108 L83 100 M101 74 L116 68"/>
+        </g>
+        <g fill="#f5c842">
+          <circle cx="102" cy="8" r="2.4"/>
+          <circle cx="118" cy="24" r="1.5"/><circle cx="84" cy="30" r="1.2"/>
+          <circle cx="146" cy="170" r="1.4"/><circle cx="52" cy="130" r="1.2"/>
+          <circle cx="150" cy="92" r="1.1"/><circle cx="48" cy="212" r="1.3"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PARTNERS / INVESTORS ══  PLACEHOLDER copy, public-safe framing -->
+<section class="partners" id="partners">
   <div class="wrap">
-    <h2 class="gold">Luxury has a<br>shadow side.</h2>
-    <p>High-end on the surface, a little rebellious underneath. New drops land often — come find the one that was always yours.</p>
-    <a class="btn btn-gold" href="#" data-contact>Get on the list</a>
+    <span class="kicker">For partners &amp; investors</span>
+    <h2>A small studio with deep roots</h2>
+    <p class="lede">Behind the closet is a disciplined practice: a written sourcing
+    methodology, a multi-marketplace listing pipeline, and software we built
+    ourselves for inventory, pricing, and market data.</p>
+    <div class="grid2">
+      <div class="tile"><h3>Multi-marketplace</h3><p>Poshmark-anchored with reach across eBay, Mercari, Depop, and consignment channels for the top tier.</p></div>
+      <div class="tile"><h3>Method, written down</h3><p>Sourcing decisions run through a versioned playbook — brand knowledge, market comps, and honest math before enthusiasm.</p></div>
+      <div class="tile"><h3>Tools of our own</h3><p>In-house software tends intake, inventory, cross-listing, and monitoring, so judgment gets spent where it counts.</p></div>
+      <div class="tile"><h3>Room to grow</h3><p>The same careful practice scales from one closet to a team — inquiries welcome.</p></div>
+    </div>
   </div>
 </section>
 
-<!-- ============ FOOTER ============ -->
+<!-- ══ CONTACT ══ (mailto assembled in JS — no plaintext address in source) -->
+<section id="contact">
+  <div class="wrap" style="text-align:center">
+    <span class="kicker">Say hello</span>
+    <h2>The door's open</h2>
+    <p class="lede" style="margin:0 auto 26px">Sourcing partnerships, wholesale lots,
+    press — or a pair of jeans you'll wonder how you lived without.</p>
+    <a class="btn btn-solid" id="mailbtn" href="#" rel="nofollow">Email GoodGenes</a>
+  </div>
+</section>
+
 <footer>
+  <div class="fireflies" aria-hidden="true"></div>
   <div class="wrap">
-    <a class="brand" href="index.html" aria-label="GoodGenes home">
-      <span class="mono" aria-hidden="true"><span class="g1">G</span><span class="g2">G</span></span>
-      <span class="word" style="font-size:1.15rem">GoodGenes</span>
-    </a>
-    <div class="foot-links">
-      <a href="#" data-contact>Contact</a>
-      <a href="login.html">Team login</a>
+    <div>
+      <div class="fword">Good<em>Genes</em></div>
+      <div class="ftag">Wear your legacy.</div>
     </div>
-    <div class="muted">© 2026 GoodGenes · Wear your legacy.</div>
+    <nav>
+      <a href="#about">What we do</a>
+      <a href="#story">Our story</a>
+      <a href="#partners">Partners</a>
+      <a href="login.html">Team sign-in</a>
+    </nav>
+    <div class="note">© 2026 GoodGenes · goodgenes.net · Curated pre-loved fashion,
+    shipped from Colorado.</div>
   </div>
 </footer>
 
 <script>
-  // Contact without publishing a plaintext mailto (harvest-bait guard). Placeholder
-  // address — Patty to confirm the real inbox; assembled at click-time.
-  for (const el of document.querySelectorAll('[data-contact]')) {
-    el.addEventListener('click', function (e) {
-      e.preventDefault();
-      const u = 'hello', d = 'goodgenes.net';
-      window.location.href = 'mailto:' + u + '@' + d;
-    });
+/* Contact: assemble the address on click (keeps it out of the HTML source). */
+(function(){
+  var b = document.getElementById('mailbtn');
+  var addr = ['hello','goodgenes.net'];          /* PLACEHOLDER address */
+  b.addEventListener('click', function(e){
+    e.preventDefault();
+    location.href = 'mailto:' + addr[0] + '@' + addr[1];
+  });
+})();
+
+/* ── Fireflies over an evening garden — Patty's gold-speck field, alive.
+     Slow upward drift + soft pulse; static field under reduced motion. ── */
+(function(){
+  var canvas = document.getElementById('garden');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var flies = [];
+
+  function spawn(y){
+    return {
+      x: Math.random() * W,
+      y: y != null ? y : Math.random() * H,
+      r: Math.random() * 1.4 + 0.4,
+      a: Math.random() * 0.5 + 0.25,          /* base brightness */
+      vy: -(Math.random() * 6 + 2),           /* px/s upward */
+      vx: (Math.random() - 0.5) * 5,          /* gentle sideways wander */
+      ph: Math.random() * Math.PI * 2,        /* pulse phase */
+      pw: Math.random() * 1.2 + 0.5           /* pulse speed */
+    };
   }
+
+  function resize(){
+    W = canvas.clientWidth; H = canvas.clientHeight;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    flies = [];
+    var n = Math.round((W * H) / 10000);
+    for (var i = 0; i < n; i++) flies.push(spawn());
+  }
+
+  var last = null;
+  function frame(t){
+    ctx.clearRect(0, 0, W, H);
+    var dt = (last == null || reduce) ? 0 : Math.min(64, t - last) / 1000;
+    last = t;
+    for (var i = 0; i < flies.length; i++){
+      var f = flies[i];
+      if (dt){
+        f.y += f.vy * dt; f.x += f.vx * dt;
+        if (f.y < -6){ flies[i] = f = spawn(H + 4); }
+        if (f.x < -6) f.x = W + 4; else if (f.x > W + 6) f.x = -4;
+      }
+      var pulse = reduce ? 1 : (0.6 + 0.4 * Math.sin(t / 1000 * f.pw + f.ph));
+      var alpha = f.a * pulse;
+      /* soft glow for the brighter few */
+      if (f.r > 1.3){
+        var g = ctx.createRadialGradient(f.x, f.y, 0, f.x, f.y, 7);
+        g.addColorStop(0, 'rgba(245,200,66,' + (alpha * 0.55).toFixed(3) + ')');
+        g.addColorStop(1, 'rgba(245,200,66,0)');
+        ctx.fillStyle = g;
+        ctx.beginPath(); ctx.arc(f.x, f.y, 7, 0, Math.PI * 2); ctx.fill();
+      }
+      ctx.beginPath(); ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(245,200,66,' + alpha.toFixed(3) + ')';
+      ctx.fill();
+    }
+    if (!reduce) requestAnimationFrame(frame);
+  }
+
+  resize();
+  window.addEventListener('resize', function(){ resize(); if (reduce) frame(0); });
+  if (reduce) frame(0); else requestAnimationFrame(frame);
+})();
 </script>
 </body>
 </html>
